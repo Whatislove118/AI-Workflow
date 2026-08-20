@@ -23,6 +23,12 @@
 | [code-review](commands/code-review.md) | Ревью тикетов и реализации плана (путь передаётся ссылкой в аргументе), с исправлением найденных проблем. |
 | [codefix](commands/codefix.md) | Точечное изменение после реализации плана; в аргументе передаются ссылка на план и описание изменения. |
 
+## Воркфлоу
+
+| Воркфлоу | Назначение |
+|----------|------------|
+| [fix-ai-scan](workflows/fix-ai-scan.js) | Haiku ищет по репо комментарии `FIX-AI:`, Sonnet чинит каждый находкой отдельным патчем. Запуск: `/ai-workflow:fix-ai-scan` (опционально ссылка на план/тикет после команды, например `/ai-workflow:fix-ai-scan @.scratch/<feature-slug>/PLAN.md` — она передаётся каждому фиксу как контекст). |
+
 ## Хуки
 
 | Хук | Событие | Назначение |
@@ -51,7 +57,7 @@ flowchart TD
     H -- "PLAN.md закрыт" --> J
     G --> J["Ревью (новая сессия)\n/ai-workflow:code-review @.scratch/#lt;feature-slug#gt;/PLAN.md"]
     J --> K["Точечные правки (новая сессия)\n/ai-workflow:codefix @.scratch/#lt;feature-slug#gt;/PLAN.md сделай X"]
-    K --> L["Финал: /citronus-marketplace:ship-pr\n(squash, push, PR), удалить .scratch/"]
+    K --> L["Финал: \n(squash, push, PR), удалить .scratch/"]
 ```
 
 1. **Обсуждение.**
@@ -135,6 +141,17 @@ flowchart TD
 
    Текст после команды (`$ARGUMENTS`) подставляется как есть — включайте
    в него и ссылку на план, и описание нужного изменения.
+
+   Если правок много и они разбросаны по коду — разметьте нужные места
+   комментариями `FIX-AI: ...` и прогоните
+   [fix-ai-scan](workflows/fix-ai-scan.js):
+
+   ```text
+   /ai-workflow:fix-ai-scan @.scratch/<feature-slug>/PLAN.md
+   ```
+
+   Каждый найденный комментарий чинится отдельным патчем, со ссылкой на план
+   как контекстом.
 
 7. **Финал.** Скилл `ship-pr` живёт в другом плагине
    (`backend@citronus-marketplace`), не здесь:
