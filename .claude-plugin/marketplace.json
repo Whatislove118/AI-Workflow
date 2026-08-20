@@ -1,0 +1,14 @@
+{
+  "name": "whatislove118",
+  "description": "Команды и хук Claude Code для пайплайна фича→PR.",
+  "owner": {
+    "name": "Whatislove118"
+  },
+  "plugins": [
+    {
+      "name": "ai-workflow",
+      "source": "./",
+      "description": "Пайплайн фича→PR: команды для этапной разработки (спека, тикеты, реализация, ревью, PR) поверх mattpocock-skills."
+    }
+  ]
+}

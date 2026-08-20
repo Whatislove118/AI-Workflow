@@ -1,0 +1,7 @@
+{
+  "name": "ai-workflow",
+  "description": "Пайплайн фича→PR: команды для этапной разработки (спека, тикеты, реализация, ревью, PR) поверх mattpocock-skills.",
+  "author": {
+    "name": "Whatislove118"
+  }
+}
