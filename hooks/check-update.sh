@@ -36,7 +36,7 @@ installed_version() {
 }
 
 remote_version() {
-  git ls-remote "$REPO_URL" refs/heads/main 2>/dev/null | cut -f1 | cut -c1-12
+  git ls-remote "$REPO_URL" refs/heads/master 2>/dev/null | cut -f1 | cut -c1-12
 }
 
 emit_check_failed() {

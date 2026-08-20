@@ -32,7 +32,7 @@
 
 | Хук | Событие | Назначение |
 |-----|---------|------------|
-| [check-update](hooks/check-update.sh) | `SessionStart` | Сравнивает установленную версию плагина с HEAD ветки `main` на GitHub; если они расходятся, пишет в чат предупреждение с командой `claude plugin update ai-workflow@whatislove118`. |
+| [check-update](hooks/check-update.sh) | `SessionStart` | Сравнивает установленную версию плагина с HEAD ветки `master` на GitHub; если они расходятся, пишет в чат предупреждение с командой `claude plugin update ai-workflow@whatislove118`. |
 
 ## Пайплайн: от фичи до PR
 
