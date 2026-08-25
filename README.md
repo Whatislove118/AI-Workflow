@@ -17,6 +17,7 @@
 
 | Команда | Назначение |
 |---------|------------|
+| [to-tickets](commands/to-tickets.md) | Раскладывает спеку на тикеты и `PLAN.md` в `.scratch/<feature-slug>/`. |
 | [next-ticket](commands/next-ticket.md) | Реализует следующий тикет из плана (путь передаётся ссылкой в аргументе) и запускает триаж. |
 | [implement-all](commands/implement-all.md) | Реализует все тикеты из плана (путь передаётся ссылкой в аргументе). |
 | [code-review](commands/code-review.md) | Ревью тикетов и реализации плана (путь передаётся ссылкой в аргументе), с исправлением найденных проблем. |
@@ -46,7 +47,7 @@ flowchart TD
     A["Обсуждение\n/mattpocock-skills:grill-with-docs"]
     A -- "просто, всё понятно" --> B["/mattpocock-skills:implement this"]
     A -- "нужна спека" --> C["Спека (та же сессия)\n/mattpocock-skills:to-spec"]
-    C --> D["Тикеты (та же сессия)\n/mattpocock-skills:to-tickets write the plan down as tickets and a general @.scratch/#lt;feature-slug#gt;/PLAN.md with refs to them\n→ SPEC.md, PLAN.md, tickets/"]
+    C --> D["Тикеты (та же сессия)\n/ai-workflow:to-tickets\n→ SPEC.md, PLAN.md, tickets/"]
     D --> E["/clear"]
     E --> F{"План влезает\nв одну сессию?"}
     F -- да --> G["/ai-workflow:implement-all @.scratch/#lt;feature-slug#gt;/PLAN.md"]
@@ -87,7 +88,7 @@ flowchart TD
 3. **Тикеты.** В той же сессии:
 
    ```text
-   /mattpocock-skills:to-tickets write the plan down as tickets and a general @.scratch/<feature-slug>/PLAN.md with refs to them
+   /ai-workflow:to-tickets
    ```
 
    Получаете:
@@ -113,13 +114,7 @@ flowchart TD
    Если нет — по тикету на сессию, с `/clear` между ними:
 
    ```text
-   /ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md
-   ```
-
-   После каждого тикета, в той же сессии:
-
-   ```text
-   /mattpocock-skills:triage this ticket
+   /ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md, after do commit
    ```
 
    Затем `/clear` и повтор `/ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md`,
