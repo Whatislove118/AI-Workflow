@@ -18,7 +18,7 @@
 | Команда | Назначение |
 |---------|------------|
 | [to-tickets](commands/to-tickets.md) | Раскладывает спеку на тикеты и `PLAN.md` в `.scratch/<feature-slug>/`. |
-| [next-ticket](commands/next-ticket.md) | Реализует следующий тикет из плана (путь передаётся ссылкой в аргументе) и запускает триаж. |
+| [next-ticket](commands/next-ticket.md) | Реализует следующий тикет из плана (путь передаётся ссылкой в аргументе). |
 | [implement-all](commands/implement-all.md) | Реализует все тикеты из плана (путь передаётся ссылкой в аргументе). |
 | [code-review](commands/code-review.md) | Ревью тикетов и реализации плана (путь передаётся ссылкой в аргументе), с исправлением найденных проблем. |
 | [codefix](commands/codefix.md) | Точечное изменение после реализации плана; в аргументе передаются ссылка на план и описание изменения. |
@@ -52,8 +52,7 @@ flowchart TD
     E --> F{"План влезает\nв одну сессию?"}
     F -- да --> G["/ai-workflow:implement-all @.scratch/#lt;feature-slug#gt;/PLAN.md"]
     F -- нет --> H["/ai-workflow:next-ticket @.scratch/#lt;feature-slug#gt;/PLAN.md\n(тикет за тикетом)"]
-    H --> T["/mattpocock-skills:triage current ticket\n(та же сессия)"]
-    T --> I["/clear"] --> H
+    H --> I["/clear"] --> H
     H -- "PLAN.md закрыт" --> J
     G --> J["Ревью (новая сессия)\n/ai-workflow:code-review @.scratch/#lt;feature-slug#gt;/PLAN.md"]
     J --> K["Точечные правки (новая сессия)\n/ai-workflow:codefix @.scratch/#lt;feature-slug#gt;/PLAN.md сделай X"]
