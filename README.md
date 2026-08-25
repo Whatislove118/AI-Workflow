@@ -17,7 +17,7 @@
 
 | Команда | Назначение |
 |---------|------------|
-| [to-tickets](commands/to-tickets.md) | Раскладывает спеку на тикеты и `PLAN.md` в `.scratch/<feature-slug>/`. |
+| [to-tickets](commands/to-tickets.md) | Не вызывает скилл (нельзя — `disable-model-invocation`), просто разворачивается в текст-инструкцию для уже запущенного вручную `/mattpocock-skills:to-tickets`. |
 | [next-ticket](commands/next-ticket.md) | Реализует следующий тикет из плана (путь передаётся ссылкой в аргументе). |
 | [implement-all](commands/implement-all.md) | Реализует все тикеты из плана (путь передаётся ссылкой в аргументе). |
 | [code-review](commands/code-review.md) | Ревью тикетов и реализации плана (путь передаётся ссылкой в аргументе), с исправлением найденных проблем. |
@@ -47,7 +47,7 @@ flowchart TD
     A["Обсуждение\n/mattpocock-skills:grill-with-docs"]
     A -- "просто, всё понятно" --> B["/mattpocock-skills:implement this"]
     A -- "нужна спека" --> C["Спека (та же сессия)\n/mattpocock-skills:to-spec"]
-    C --> D["Тикеты (та же сессия)\n/ai-workflow:to-tickets\n→ SPEC.md, PLAN.md, tickets/"]
+    C --> D["Тикеты (та же сессия)\n/mattpocock-skills:to-tickets /ai-workflow:to-tickets\n→ SPEC.md, PLAN.md, tickets/"]
     D --> E["/clear"]
     E --> F{"План влезает\nв одну сессию?"}
     F -- да --> G["/ai-workflow:implement-all @.scratch/#lt;feature-slug#gt;/PLAN.md"]
@@ -87,7 +87,7 @@ flowchart TD
 3. **Тикеты.** В той же сессии:
 
    ```text
-   /ai-workflow:to-tickets
+   /mattpocock-skills:to-tickets /ai-workflow:to-tickets
    ```
 
    Получаете:
