@@ -114,8 +114,9 @@ flowchart TD
    Если нет — по тикету на сессию, с `/clear` между ними:
 
    ```text
-   /ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md, after do commit
+   /ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md
    ```
+   (делает тикет + коммит по завершению)
 
    Затем `/clear` и повтор `/ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md`,
    пока `PLAN.md` не закроется целиком.
