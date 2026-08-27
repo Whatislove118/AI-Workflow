@@ -1,1 +1,1 @@
-/mattpocock-skills:implement the next ticket from $ARGUMENTS
+/mattpocock-skills:implement the next ticket from $ARGUMENTS, after do commit
