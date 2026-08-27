@@ -51,8 +51,9 @@ flowchart TD
     E --> F{"План влезает\nв одну сессию?"}
     F -- да --> G["/ai-workflow:implement-all @.scratch/#lt;feature-slug#gt;/PLAN.md"]
     F -- нет --> H["/ai-workflow:next-ticket @.scratch/#lt;feature-slug#gt;/PLAN.md\n(тикет за тикетом)"]
-    H --> I["/clear"] --> H
-    H -- "PLAN.md закрыт" --> J
+    H --> T["/mattpocock-skills:triage"]
+    T --> I["/clear"] --> H
+    T -- "PLAN.md закрыт" --> J
     G --> J["Ревью (новая сессия)\n/ai-workflow:code-review @.scratch/#lt;feature-slug#gt;/PLAN.md"]
     J --> K["Точечные правки (новая сессия)\n/ai-workflow:codefix @.scratch/#lt;feature-slug#gt;/PLAN.md сделай X"]
     K --> L["Финал: squash, push, PR\nудалить .scratch/"]
@@ -116,7 +117,8 @@ flowchart TD
    ```
    (делает тикет + коммит по завершению)
 
-   Затем `/clear` и повтор `/ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md`,
+   После каждого тикета — `/mattpocock-skills:triage`, затем `/clear` и повтор
+   `/ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md`,
    пока `PLAN.md` не закроется целиком.
 
 5. **Ревью.** В свежей сессии, когда все тикеты готовы:
