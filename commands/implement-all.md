@@ -1,1 +1,1 @@
-/mattpocock-skills:implement all tickets $ARGUMENTS
+/mattpocock-skills:implement all issues $ARGUMENTS

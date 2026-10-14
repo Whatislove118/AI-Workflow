@@ -17,7 +17,7 @@
 
 | Команда | Назначение |
 |---------|------------|
-| [next-ticket](commands/next-ticket.md) | Реализует следующий тикет из плана (путь передаётся ссылкой в аргументе). |
+| [next-issue](commands/next-issue.md) | Реализует следующий тикет из плана (путь передаётся ссылкой в аргументе). |
 | [implement-all](commands/implement-all.md) | Реализует все тикеты из плана (путь передаётся ссылкой в аргументе). |
 | [code-review](commands/code-review.md) | Ревью тикетов и реализации плана (путь передаётся ссылкой в аргументе), с исправлением найденных проблем. |
 | [codefix](commands/codefix.md) | Точечное изменение после реализации плана; в аргументе передаются ссылка на план и описание изменения. |
@@ -46,11 +46,11 @@ flowchart TD
     A["Обсуждение\n/mattpocock-skills:grill-with-docs"]
     A -- "просто, всё понятно" --> B["/mattpocock-skills:implement this"]
     A -- "нужна спека" --> C["Спека (та же сессия)\n/mattpocock-skills:to-spec"]
-    C --> D["Тикеты (та же сессия)\n/mattpocock-skills:to-tickets write the plan down as tickets and a general @.scratch/#lt;feature-slug#gt;/PLAN.md with refs to them\n→ SPEC.md, PLAN.md, tickets/"]
+    C --> D["Issues (та же сессия)\n/mattpocock-skills:to-issues write the plan down as issues and a general @.scratch/#lt;feature-slug#gt;/PLAN.md with refs to them\n→ spec.md, PLAN.md, issues/"]
     D --> E["/clear"]
     E --> F{"План влезает\nв одну сессию?"}
     F -- да --> G["/ai-workflow:implement-all @.scratch/#lt;feature-slug#gt;/PLAN.md"]
-    F -- нет --> H["/ai-workflow:next-ticket @.scratch/#lt;feature-slug#gt;/PLAN.md\n(тикет за тикетом)"]
+    F -- нет --> H["/ai-workflow:next-issue @.scratch/#lt;feature-slug#gt;/PLAN.md\n(issue за issue)"]
     H --> I["/clear"] --> H
     H -- "PLAN.md закрыт" --> J
     G --> J["Ревью (новая сессия)\n/ai-workflow:code-review @.scratch/#lt;feature-slug#gt;/PLAN.md"]
@@ -86,7 +86,7 @@ flowchart TD
 3. **Тикеты.** В той же сессии:
 
    ```text
-   /mattpocock-skills:to-tickets write the plan down as tickets and a general @.scratch/feature-slug/PLAN.md with refs to them\n→ SPEC.md, PLAN.md, tickets/
+   /mattpocock-skills:to-issues write the plan down as issues and a general @.scratch/feature-slug/PLAN.md with refs to them\n→ SPEC.md, PLAN.md, issues/
    ```
 
    Получаете:
@@ -95,9 +95,9 @@ flowchart TD
    .scratch/
    ├─ SPEC.md
    ├─ PLAN.md
-   └─ tickets/
-      ├─ ticket-1.md
-      ├─ ticket-2.md
+   └─ issues/
+      ├─ issue-1.md
+      ├─ issue-2.md
       └─ ...
    ```
 
@@ -112,11 +112,11 @@ flowchart TD
    Если нет — по тикету на сессию, с `/clear` между ними:
 
    ```text
-   /ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md
+   /ai-workflow:next-issue @.scratch/<feature-slug>/PLAN.md
    ```
    (делает тикет + коммит по завершению)
 
-   Затем `/clear` и повтор `/ai-workflow:next-ticket @.scratch/<feature-slug>/PLAN.md`,
+   Затем `/clear` и повтор `/ai-workflow:next-issue @.scratch/<feature-slug>/PLAN.md`,
    пока `PLAN.md` не закроется целиком.
 
 5. **Ревью.** В свежей сессии, когда все тикеты готовы:

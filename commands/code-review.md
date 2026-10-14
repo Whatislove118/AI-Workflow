@@ -1,1 +1,1 @@
-/mattpocock-skills:code-review all the tickets and the whole implementation of $ARGUMENTS, then fix any issues you find
+/mattpocock-skills:code-review all the issues and the whole implementation of $ARGUMENTS, then fix any problems you find

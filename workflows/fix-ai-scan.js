@@ -48,7 +48,7 @@ const items = found.items || []
 if (!items.length) return { items: [] }
 
 const planContext = planRef
-  ? `This is part of a larger feature; the plan/ticket it belongs to is ${planRef} — read it for context on what the feature is trying to do before fixing.\n\n`
+  ? `This is part of a larger feature; the plan/issue it belongs to is ${planRef} — read it for context on what the feature is trying to do before fixing.\n\n`
   : ''
 
 const fixes = await pipeline(
