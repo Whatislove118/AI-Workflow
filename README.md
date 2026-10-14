@@ -46,7 +46,7 @@ flowchart TD
     A["Обсуждение\n/mattpocock-skills:grill-with-docs"]
     A -- "просто, всё понятно" --> B["/mattpocock-skills:implement this"]
     A -- "нужна спека" --> C["Спека (та же сессия)\n/mattpocock-skills:to-spec"]
-    C --> D["Issues (та же сессия)\n/mattpocock-skills:to-issues write the plan down as issues and a general @.scratch/#lt;feature-slug#gt;/PLAN.md with refs to them\n→ spec.md, PLAN.md, issues/"]
+    C --> D["Issues (та же сессия)\n/mattpocock-skills:to-tickets write the plan down as issues and a general @.scratch/#lt;feature-slug#gt;/PLAN.md with refs to them\n→ spec.md, PLAN.md, issues/"]
     D --> E["/clear"]
     E --> F{"План влезает\nв одну сессию?"}
     F -- да --> G["/ai-workflow:implement-all @.scratch/#lt;feature-slug#gt;/PLAN.md"]
@@ -86,7 +86,7 @@ flowchart TD
 3. **Тикеты.** В той же сессии:
 
    ```text
-   /mattpocock-skills:to-issues write the plan down as issues and a general @.scratch/feature-slug/PLAN.md with refs to them\n→ SPEC.md, PLAN.md, issues/
+   /mattpocock-skills:to-tickets write the plan down as issues and a general @.scratch/feature-slug/PLAN.md with refs to them\n→ spec.md, PLAN.md, issues/
    ```
 
    Получаете:
